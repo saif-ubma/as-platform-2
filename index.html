@@ -21,7 +21,7 @@
             margin: 0;
         }
         </style>
-        <title></title>
+        <title>AS Platform</title>
     </head>
     <body>
         <div id="map">
@@ -41,11 +41,11 @@
         <script src="js/tailDT.js"></script>
 <script src="js/nouislider.min.js"></script>
 <script src="js/wNumb.js"></script>
-        <script src="data/limitevilleELTarf_1.js"></script>
-        <script src="data/cadrebati_2.js"></script>
-        <script src="data/coucheponctuelle_3.js"></script>
-        <script src="data/trameviaire_4.js"></script>
-        <script src="data/routes_5.js"></script>
+        <script src="data/limitevilleELTarf_2.js"></script>
+        <script src="data/cadrebati_3.js"></script>
+        <script src="data/coucheponctuelle_4.js"></script>
+        <script src="data/trameviaire_5.js"></script>
+        <script src="data/routes_6.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -64,7 +64,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[36.75657121316129,8.296750764497492],[36.771599799384816,8.332316950754484]]);
+        }).fitBounds([[36.75657121316129,8.29643066882118],[36.771599799384816,8.332637046430786]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -84,10 +84,23 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_GoogleSatellite_0');
-        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
-        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleSatellite_0',
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        map.createPane('pane_GoogleSatellite_1');
+        map.getPane('pane_GoogleSatellite_1').style.zIndex = 401;
+        var layer_GoogleSatellite_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_1',
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 1,
@@ -95,9 +108,9 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_GoogleSatellite_0;
-        map.addLayer(layer_GoogleSatellite_0);
-        function pop_limitevilleELTarf_1(feature, layer) {
+        layer_GoogleSatellite_1;
+        map.addLayer(layer_GoogleSatellite_1);
+        function pop_limitevilleELTarf_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -108,18 +121,15 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['nom'] !== null ? autolinker.link(feature.properties['nom'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_limitevilleELTarf_1_0() {
+        function style_limitevilleELTarf_2_0() {
             return {
-                pane: 'pane_limitevilleELTarf_1',
+                pane: 'pane_limitevilleELTarf_2',
                 opacity: 1,
                 color: 'rgba(227,26,28,1.0)',
                 dashArray: '1,5',
@@ -132,21 +142,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_limitevilleELTarf_1');
-        map.getPane('pane_limitevilleELTarf_1').style.zIndex = 401;
-        map.getPane('pane_limitevilleELTarf_1').style['mix-blend-mode'] = 'normal';
-        var layer_limitevilleELTarf_1 = new L.geoJson(json_limitevilleELTarf_1, {
+        map.createPane('pane_limitevilleELTarf_2');
+        map.getPane('pane_limitevilleELTarf_2').style.zIndex = 402;
+        map.getPane('pane_limitevilleELTarf_2').style['mix-blend-mode'] = 'normal';
+        var layer_limitevilleELTarf_2 = new L.geoJson(json_limitevilleELTarf_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_limitevilleELTarf_1',
-            layerName: 'layer_limitevilleELTarf_1',
-            pane: 'pane_limitevilleELTarf_1',
-            onEachFeature: pop_limitevilleELTarf_1,
-            style: style_limitevilleELTarf_1_0,
+            dataVar: 'json_limitevilleELTarf_2',
+            layerName: 'layer_limitevilleELTarf_2',
+            pane: 'pane_limitevilleELTarf_2',
+            onEachFeature: pop_limitevilleELTarf_2,
+            style: style_limitevilleELTarf_2_0,
         });
-        bounds_group.addLayer(layer_limitevilleELTarf_1);
-        map.addLayer(layer_limitevilleELTarf_1);
-        function pop_cadrebati_2(feature, layer) {
+        bounds_group.addLayer(layer_limitevilleELTarf_2);
+        map.addLayer(layer_limitevilleELTarf_2);
+        function pop_cadrebati_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -157,400 +167,24 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['full_id'] !== null ? autolinker.link(feature.properties['full_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_type'] !== null ? autolinker.link(feature.properties['osm_type'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['highway'] !== null ? autolinker.link(feature.properties['highway'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['natural'] !== null ? autolinker.link(feature.properties['natural'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['short_name'] !== null ? autolinker.link(feature.properties['short_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['short_na_1'] !== null ? autolinker.link(feature.properties['short_na_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['short_na_2'] !== null ? autolinker.link(feature.properties['short_na_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_w'] !== null ? autolinker.link(feature.properties['operator_w'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_s'] !== null ? autolinker.link(feature.properties['operator_s'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_f'] !== null ? autolinker.link(feature.properties['operator_f'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_shor'] !== null ? autolinker.link(feature.properties['brand_shor'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['self_servi'] !== null ? autolinker.link(feature.properties['self_servi'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fuel_lpg'] !== null ? autolinker.link(feature.properties['fuel_lpg'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fuel_gasol'] !== null ? autolinker.link(feature.properties['fuel_gasol'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fuel_diese'] !== null ? autolinker.link(feature.properties['fuel_diese'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_wiki'] !== null ? autolinker.link(feature.properties['brand_wiki'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_wi_1'] !== null ? autolinker.link(feature.properties['brand_wi_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_webs'] !== null ? autolinker.link(feature.properties['brand_webs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_fr'] !== null ? autolinker.link(feature.properties['brand_fr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_ar'] !== null ? autolinker.link(feature.properties['brand_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand'] !== null ? autolinker.link(feature.properties['brand'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['phone'] !== null ? autolinker.link(feature.properties['phone'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_1'] !== null ? autolinker.link(feature.properties['operator_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_2'] !== null ? autolinker.link(feature.properties['operator_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_a'] !== null ? autolinker.link(feature.properties['operator_a'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator'] !== null ? autolinker.link(feature.properties['operator'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['barrier'] !== null ? autolinker.link(feature.properties['barrier'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['landuse'] !== null ? autolinker.link(feature.properties['landuse'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['studio'] !== null ? autolinker.link(feature.properties['studio'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['isced_leve'] !== null ? autolinker.link(feature.properties['isced_leve'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['healthcare'] !== null ? autolinker.link(feature.properties['healthcare'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['website'] !== null ? autolinker.link(feature.properties['website'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name'] !== null ? autolinker.link(feature.properties['alt_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['office'] !== null ? autolinker.link(feature.properties['office'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['surface'] !== null ? autolinker.link(feature.properties['surface'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['sport'] !== null ? autolinker.link(feature.properties['sport'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['lit'] !== null ? autolinker.link(feature.properties['lit'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['leisure'] !== null ? autolinker.link(feature.properties['leisure'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['public_tra'] !== null ? autolinker.link(feature.properties['public_tra'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['bus'] !== null ? autolinker.link(feature.properties['bus'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['addr_city_'] !== null ? autolinker.link(feature.properties['addr_city_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['religion'] !== null ? autolinker.link(feature.properties['religion'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['denominati'] !== null ? autolinker.link(feature.properties['denominati'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['building'] !== null ? autolinker.link(feature.properties['building'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['amenity'] !== null ? autolinker.link(feature.properties['amenity'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name_a'] !== null ? autolinker.link(feature.properties['alt_name_a'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['addr_postc'] !== null ? autolinker.link(feature.properties['addr_postc'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['addr_city'] !== null ? autolinker.link(feature.properties['addr_city'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_name_'] !== null ? autolinker.link(feature.properties['long_name_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_1'] !== null ? autolinker.link(feature.properties['long_nam_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['source_pop'] !== null ? autolinker.link(feature.properties['source_pop'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ref_ONS'] !== null ? autolinker.link(feature.properties['ref_ONS'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['population'] !== null ? autolinker.link(feature.properties['population'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['populati_1'] !== null ? autolinker.link(feature.properties['populati_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ms'] !== null ? autolinker.link(feature.properties['name_ms'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_az-Ar'] !== null ? autolinker.link(feature.properties['name_az-Ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikipedia_'] !== null ? autolinker.link(feature.properties['wikipedia_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikipedia'] !== null ? autolinker.link(feature.properties['wikipedia'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikidata'] !== null ? autolinker.link(feature.properties['wikidata'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ref'] !== null ? autolinker.link(feature.properties['ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_zu'] !== null ? autolinker.link(feature.properties['name_zu'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_zh'] !== null ? autolinker.link(feature.properties['name_zh'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_war'] !== null ? autolinker.link(feature.properties['name_war'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_vi'] !== null ? autolinker.link(feature.properties['name_vi'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ur'] !== null ? autolinker.link(feature.properties['name_ur'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_uk'] !== null ? autolinker.link(feature.properties['name_uk'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_tr'] !== null ? autolinker.link(feature.properties['name_tr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_tl'] !== null ? autolinker.link(feature.properties['name_tl'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_tg'] !== null ? autolinker.link(feature.properties['name_tg'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_sw'] !== null ? autolinker.link(feature.properties['name_sw'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_sv'] !== null ? autolinker.link(feature.properties['name_sv'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_sr'] !== null ? autolinker.link(feature.properties['name_sr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_sh'] !== null ? autolinker.link(feature.properties['name_sh'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_se'] !== null ? autolinker.link(feature.properties['name_se'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ru'] !== null ? autolinker.link(feature.properties['name_ru'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ro'] !== null ? autolinker.link(feature.properties['name_ro'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_pt'] !== null ? autolinker.link(feature.properties['name_pt'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_pl'] !== null ? autolinker.link(feature.properties['name_pl'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_no'] !== null ? autolinker.link(feature.properties['name_no'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_nl'] !== null ? autolinker.link(feature.properties['name_nl'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_nan'] !== null ? autolinker.link(feature.properties['name_nan'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_lt'] !== null ? autolinker.link(feature.properties['name_lt'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_lad'] !== null ? autolinker.link(feature.properties['name_lad'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ks'] !== null ? autolinker.link(feature.properties['name_ks'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ko'] !== null ? autolinker.link(feature.properties['name_ko'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_kab'] !== null ? autolinker.link(feature.properties['name_kab'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ka'] !== null ? autolinker.link(feature.properties['name_ka'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ja'] !== null ? autolinker.link(feature.properties['name_ja'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_it'] !== null ? autolinker.link(feature.properties['name_it'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_id'] !== null ? autolinker.link(feature.properties['name_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_hu'] !== null ? autolinker.link(feature.properties['name_hu'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_hi'] !== null ? autolinker.link(feature.properties['name_hi'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_gl'] !== null ? autolinker.link(feature.properties['name_gl'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_fr'] !== null ? autolinker.link(feature.properties['name_fr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_fa'] !== null ? autolinker.link(feature.properties['name_fa'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_eu'] !== null ? autolinker.link(feature.properties['name_eu'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_es'] !== null ? autolinker.link(feature.properties['name_es'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_eo'] !== null ? autolinker.link(feature.properties['name_eo'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_en'] !== null ? autolinker.link(feature.properties['name_en'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_el'] !== null ? autolinker.link(feature.properties['name_el'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_de'] !== null ? autolinker.link(feature.properties['name_de'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_da'] !== null ? autolinker.link(feature.properties['name_da'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ceb'] !== null ? autolinker.link(feature.properties['name_ceb'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ca'] !== null ? autolinker.link(feature.properties['name_ca'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_bg'] !== null ? autolinker.link(feature.properties['name_bg'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ber'] !== null ? autolinker.link(feature.properties['name_ber'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_be-ta'] !== null ? autolinker.link(feature.properties['name_be-ta'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_be'] !== null ? autolinker.link(feature.properties['name_be'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_azb'] !== null ? autolinker.link(feature.properties['name_azb'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ast'] !== null ? autolinker.link(feature.properties['name_ast'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ar'] !== null ? autolinker.link(feature.properties['name_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">name</th>\
-                        <td>' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_2'] !== null ? autolinker.link(feature.properties['long_nam_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_3'] !== null ? autolinker.link(feature.properties['long_nam_3'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_4'] !== null ? autolinker.link(feature.properties['long_nam_4'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_5'] !== null ? autolinker.link(feature.properties['long_nam_5'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_6'] !== null ? autolinker.link(feature.properties['long_nam_6'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_7'] !== null ? autolinker.link(feature.properties['long_nam_7'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_8'] !== null ? autolinker.link(feature.properties['long_nam_8'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam_9'] !== null ? autolinker.link(feature.properties['long_nam_9'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_nam10'] !== null ? autolinker.link(feature.properties['long_nam10'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long_name'] !== null ? autolinker.link(feature.properties['long_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['boundary'] !== null ? autolinker.link(feature.properties['boundary'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name_k'] !== null ? autolinker.link(feature.properties['alt_name_k'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name_e'] !== null ? autolinker.link(feature.properties['alt_name_e'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['admin_leve'] !== null ? autolinker.link(feature.properties['admin_leve'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ISO3166-2'] !== null ? autolinker.link(feature.properties['ISO3166-2'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['prix_L'] !== null ? autolinker.link(feature.properties['prix_L'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_cadrebati_2_0() {
+        function style_cadrebati_3_0() {
             return {
-                pane: 'pane_cadrebati_2',
+                pane: 'pane_cadrebati_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -563,21 +197,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_cadrebati_2');
-        map.getPane('pane_cadrebati_2').style.zIndex = 402;
-        map.getPane('pane_cadrebati_2').style['mix-blend-mode'] = 'normal';
-        var layer_cadrebati_2 = new L.geoJson(json_cadrebati_2, {
+        map.createPane('pane_cadrebati_3');
+        map.getPane('pane_cadrebati_3').style.zIndex = 403;
+        map.getPane('pane_cadrebati_3').style['mix-blend-mode'] = 'normal';
+        var layer_cadrebati_3 = new L.geoJson(json_cadrebati_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_cadrebati_2',
-            layerName: 'layer_cadrebati_2',
-            pane: 'pane_cadrebati_2',
-            onEachFeature: pop_cadrebati_2,
-            style: style_cadrebati_2_0,
+            dataVar: 'json_cadrebati_3',
+            layerName: 'layer_cadrebati_3',
+            pane: 'pane_cadrebati_3',
+            onEachFeature: pop_cadrebati_3,
+            style: style_cadrebati_3_0,
         });
-        bounds_group.addLayer(layer_cadrebati_2);
-        map.addLayer(layer_cadrebati_2);
-        function pop_coucheponctuelle_3(feature, layer) {
+        bounds_group.addLayer(layer_cadrebati_3);
+        map.addLayer(layer_cadrebati_3);
+        function pop_coucheponctuelle_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -588,126 +222,6 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['full_id'] !== null ? autolinker.link(feature.properties['full_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_type'] !== null ? autolinker.link(feature.properties['osm_type'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['isced_leve'] !== null ? autolinker.link(feature.properties['isced_leve'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['government'] !== null ? autolinker.link(feature.properties['government'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['leisure'] !== null ? autolinker.link(feature.properties['leisure'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['addr_stree'] !== null ? autolinker.link(feature.properties['addr_stree'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['internet_a'] !== null ? autolinker.link(feature.properties['internet_a'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['short_name'] !== null ? autolinker.link(feature.properties['short_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['tourism'] !== null ? autolinker.link(feature.properties['tourism'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cuisine'] !== null ? autolinker.link(feature.properties['cuisine'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['public_tra'] !== null ? autolinker.link(feature.properties['public_tra'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['bus'] !== null ? autolinker.link(feature.properties['bus'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['sorting_na'] !== null ? autolinker.link(feature.properties['sorting_na'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['sorting__1'] !== null ? autolinker.link(feature.properties['sorting__1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['addr_postc'] !== null ? autolinker.link(feature.properties['addr_postc'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['opening_ho'] !== null ? autolinker.link(feature.properties['opening_ho'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['power'] !== null ? autolinker.link(feature.properties['power'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['phone'] !== null ? autolinker.link(feature.properties['phone'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['religion'] !== null ? autolinker.link(feature.properties['religion'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['denominati'] !== null ? autolinker.link(feature.properties['denominati'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['healthcare'] !== null ? autolinker.link(feature.properties['healthcare'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['healthca_1'] !== null ? autolinker.link(feature.properties['healthca_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['short_na_1'] !== null ? autolinker.link(feature.properties['short_na_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['short_na_2'] !== null ? autolinker.link(feature.properties['short_na_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_s'] !== null ? autolinker.link(feature.properties['operator_s'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['official_n'] !== null ? autolinker.link(feature.properties['official_n'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['official_1'] !== null ? autolinker.link(feature.properties['official_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['official_2'] !== null ? autolinker.link(feature.properties['official_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_shor'] !== null ? autolinker.link(feature.properties['brand_shor'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name_f'] !== null ? autolinker.link(feature.properties['alt_name_f'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name'] !== null ? autolinker.link(feature.properties['alt_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['website'] !== null ? autolinker.link(feature.properties['website'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['addr_count'] !== null ? autolinker.link(feature.properties['addr_count'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_w'] !== null ? autolinker.link(feature.properties['operator_w'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_f'] !== null ? autolinker.link(feature.properties['operator_f'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_e'] !== null ? autolinker.link(feature.properties['operator_e'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_webs'] !== null ? autolinker.link(feature.properties['brand_webs'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_fr'] !== null ? autolinker.link(feature.properties['brand_fr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_es'] !== null ? autolinker.link(feature.properties['brand_es'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['brand_emai'] !== null ? autolinker.link(feature.properties['brand_emai'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
@@ -717,40 +231,7 @@
                         <td colspan="2">' + (feature.properties['operator_1'] !== null ? autolinker.link(feature.properties['operator_1'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['operator_2'] !== null ? autolinker.link(feature.properties['operator_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_a'] !== null ? autolinker.link(feature.properties['operator_a'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator'] !== null ? autolinker.link(feature.properties['operator'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['old_name_a'] !== null ? autolinker.link(feature.properties['old_name_a'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['old_name'] !== null ? autolinker.link(feature.properties['old_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['office'] !== null ? autolinker.link(feature.properties['office'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_wiki'] !== null ? autolinker.link(feature.properties['brand_wiki'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_wi_1'] !== null ? autolinker.link(feature.properties['brand_wi_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand_ar'] !== null ? autolinker.link(feature.properties['brand_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['brand'] !== null ? autolinker.link(feature.properties['brand'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['addr_city_'] !== null ? autolinker.link(feature.properties['addr_city_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['historic'] !== null ? autolinker.link(feature.properties['historic'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['amenity'] !== null ? autolinker.link(feature.properties['amenity'].toLocaleString()) : '') + '</td>\
@@ -759,160 +240,22 @@
                         <td colspan="2">' + (feature.properties['direction'] !== null ? autolinker.link(feature.properties['direction'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['shop'] !== null ? autolinker.link(feature.properties['shop'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['addr_city'] !== null ? autolinker.link(feature.properties['addr_city'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['railway'] !== null ? autolinker.link(feature.properties['railway'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['maxspeed'] !== null ? autolinker.link(feature.properties['maxspeed'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['nat_ref'] !== null ? autolinker.link(feature.properties['nat_ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['nat_name'] !== null ? autolinker.link(feature.properties['nat_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['int_ref'] !== null ? autolinker.link(feature.properties['int_ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['int_name'] !== null ? autolinker.link(feature.properties['int_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['highway_1'] !== null ? autolinker.link(feature.properties['highway_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['traffic_ca'] !== null ? autolinker.link(feature.properties['traffic_ca'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinatio'] !== null ? autolinker.link(feature.properties['destinatio'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ref_fr'] !== null ? autolinker.link(feature.properties['ref_fr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['exit_to'] !== null ? autolinker.link(feature.properties['exit_to'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['barrier'] !== null ? autolinker.link(feature.properties['barrier'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikipedia_'] !== null ? autolinker.link(feature.properties['wikipedia_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikipedia'] !== null ? autolinker.link(feature.properties['wikipedia'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikimedia_'] !== null ? autolinker.link(feature.properties['wikimedia_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikidata'] !== null ? autolinker.link(feature.properties['wikidata'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ref_ons'] !== null ? autolinker.link(feature.properties['ref_ons'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['population'] !== null ? autolinker.link(feature.properties['population'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['populati_1'] !== null ? autolinker.link(feature.properties['populati_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['place'] !== null ? autolinker.link(feature.properties['place'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_zh'] !== null ? autolinker.link(feature.properties['name_zh'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ur'] !== null ? autolinker.link(feature.properties['name_ur'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ru'] !== null ? autolinker.link(feature.properties['name_ru'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ro'] !== null ? autolinker.link(feature.properties['name_ro'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_pt'] !== null ? autolinker.link(feature.properties['name_pt'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_pl'] !== null ? autolinker.link(feature.properties['name_pl'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_nl'] !== null ? autolinker.link(feature.properties['name_nl'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ko'] !== null ? autolinker.link(feature.properties['name_ko'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_kab'] !== null ? autolinker.link(feature.properties['name_kab'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_it'] !== null ? autolinker.link(feature.properties['name_it'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_fa'] !== null ? autolinker.link(feature.properties['name_fa'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_es'] !== null ? autolinker.link(feature.properties['name_es'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_el'] !== null ? autolinker.link(feature.properties['name_el'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_de'] !== null ? autolinker.link(feature.properties['name_de'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ber'] !== null ? autolinker.link(feature.properties['name_ber'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_azb'] !== null ? autolinker.link(feature.properties['name_azb'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_az-Ar'] !== null ? autolinker.link(feature.properties['name_az-Ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['capital'] !== null ? autolinker.link(feature.properties['capital'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['ref_ar'] !== null ? autolinker.link(feature.properties['ref_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinat_1'] !== null ? autolinker.link(feature.properties['destinat_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinat_2'] !== null ? autolinker.link(feature.properties['destinat_2'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">name</th>\
                         <td>' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['ref'] !== null ? autolinker.link(feature.properties['ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_fr'] !== null ? autolinker.link(feature.properties['name_fr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_en'] !== null ? autolinker.link(feature.properties['name_en'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['name_ar'] !== null ? autolinker.link(feature.properties['name_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['highway'] !== null ? autolinker.link(feature.properties['highway'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_coucheponctuelle_3_0() {
+        function style_coucheponctuelle_4_0() {
             return {
-                pane: 'pane_coucheponctuelle_3',
+                pane: 'pane_coucheponctuelle_4',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -926,27 +269,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_coucheponctuelle_3');
-        map.getPane('pane_coucheponctuelle_3').style.zIndex = 403;
-        map.getPane('pane_coucheponctuelle_3').style['mix-blend-mode'] = 'normal';
-        var layer_coucheponctuelle_3 = new L.geoJson(json_coucheponctuelle_3, {
+        map.createPane('pane_coucheponctuelle_4');
+        map.getPane('pane_coucheponctuelle_4').style.zIndex = 404;
+        map.getPane('pane_coucheponctuelle_4').style['mix-blend-mode'] = 'normal';
+        var layer_coucheponctuelle_4 = new L.geoJson(json_coucheponctuelle_4, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_coucheponctuelle_3',
-            layerName: 'layer_coucheponctuelle_3',
-            pane: 'pane_coucheponctuelle_3',
-            onEachFeature: pop_coucheponctuelle_3,
+            dataVar: 'json_coucheponctuelle_4',
+            layerName: 'layer_coucheponctuelle_4',
+            pane: 'pane_coucheponctuelle_4',
+            onEachFeature: pop_coucheponctuelle_4,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_coucheponctuelle_3_0(feature));
+                return L.circleMarker(latlng, style_coucheponctuelle_4_0(feature));
             },
         });
-        bounds_group.addLayer(layer_coucheponctuelle_3);
-        map.addLayer(layer_coucheponctuelle_3);
-        function pop_trameviaire_4(feature, layer) {
+        bounds_group.addLayer(layer_coucheponctuelle_4);
+        map.addLayer(layer_coucheponctuelle_4);
+        function pop_trameviaire_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -957,211 +300,19 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['full_id'] !== null ? autolinker.link(feature.properties['full_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_type'] !== null ? autolinker.link(feature.properties['osm_type'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinatio'] !== null ? autolinker.link(feature.properties['destinatio'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wires'] !== null ? autolinker.link(feature.properties['wires'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['voltage'] !== null ? autolinker.link(feature.properties['voltage'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['power'] !== null ? autolinker.link(feature.properties['power'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cables'] !== null ? autolinker.link(feature.properties['cables'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ref_bag'] !== null ? autolinker.link(feature.properties['ref_bag'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['lanes_forw'] !== null ? autolinker.link(feature.properties['lanes_forw'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['lanes_back'] !== null ? autolinker.link(feature.properties['lanes_back'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ford'] !== null ? autolinker.link(feature.properties['ford'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['access_lan'] !== null ? autolinker.link(feature.properties['access_lan'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['tunnel'] !== null ? autolinker.link(feature.properties['tunnel'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinat_1'] !== null ? autolinker.link(feature.properties['destinat_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['maxspeed_l'] !== null ? autolinker.link(feature.properties['maxspeed_l'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['embankment'] !== null ? autolinker.link(feature.properties['embankment'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['old_ref_ar'] !== null ? autolinker.link(feature.properties['old_ref_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['bridge_nam'] !== null ? autolinker.link(feature.properties['bridge_nam'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['bridge_n_1'] !== null ? autolinker.link(feature.properties['bridge_n_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinat_2'] !== null ? autolinker.link(feature.properties['destinat_2'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['toll'] !== null ? autolinker.link(feature.properties['toll'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['old_ref'] !== null ? autolinker.link(feature.properties['old_ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['waterway'] !== null ? autolinker.link(feature.properties['waterway'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_sr'] !== null ? autolinker.link(feature.properties['name_sr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ru'] !== null ? autolinker.link(feature.properties['name_ru'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name_f'] !== null ? autolinker.link(feature.properties['alt_name_f'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['alt_name'] !== null ? autolinker.link(feature.properties['alt_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wdb_source'] !== null ? autolinker.link(feature.properties['wdb_source'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ur'] !== null ? autolinker.link(feature.properties['name_ur'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_es'] !== null ? autolinker.link(feature.properties['name_es'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_de'] !== null ? autolinker.link(feature.properties['name_de'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['border_typ'] !== null ? autolinker.link(feature.properties['border_typ'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['junction'] !== null ? autolinker.link(feature.properties['junction'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['nat_name'] !== null ? autolinker.link(feature.properties['nat_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_en'] !== null ? autolinker.link(feature.properties['name_en'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['height'] !== null ? autolinker.link(feature.properties['height'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['boundary'] !== null ? autolinker.link(feature.properties['boundary'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['admin_leve'] !== null ? autolinker.link(feature.properties['admin_leve'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['access'] !== null ? autolinker.link(feature.properties['access'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['turn_lanes'] !== null ? autolinker.link(feature.properties['turn_lanes'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinat_3'] !== null ? autolinker.link(feature.properties['destinat_3'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['hgv_lanes'] !== null ? autolinker.link(feature.properties['hgv_lanes'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['int_ref_ar'] !== null ? autolinker.link(feature.properties['int_ref_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['int_ref'] !== null ? autolinker.link(feature.properties['int_ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_w'] !== null ? autolinker.link(feature.properties['operator_w'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_1'] !== null ? autolinker.link(feature.properties['operator_1'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator_a'] !== null ? autolinker.link(feature.properties['operator_a'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['operator'] !== null ? autolinker.link(feature.properties['operator'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinat_4'] !== null ? autolinker.link(feature.properties['destinat_4'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['ref_ar'] !== null ? autolinker.link(feature.properties['ref_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['nat_ref'] !== null ? autolinker.link(feature.properties['nat_ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['int_name_f'] !== null ? autolinker.link(feature.properties['int_name_f'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['int_name'] !== null ? autolinker.link(feature.properties['int_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['surface'] !== null ? autolinker.link(feature.properties['surface'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">ref</th>\
                         <td>' + (feature.properties['ref'] !== null ? autolinker.link(feature.properties['ref'].toLocaleString()) : '') + '</td>\
                     </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['oneway'] !== null ? autolinker.link(feature.properties['oneway'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_fr'] !== null ? autolinker.link(feature.properties['name_fr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ar'] !== null ? autolinker.link(feature.properties['name_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['maxspeed'] !== null ? autolinker.link(feature.properties['maxspeed'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['lanes'] !== null ? autolinker.link(feature.properties['lanes'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['highway'] !== null ? autolinker.link(feature.properties['highway'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['bridge'] !== null ? autolinker.link(feature.properties['bridge'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['natural'] !== null ? autolinker.link(feature.properties['natural'].toLocaleString()) : '') + '</td>\
-                    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_trameviaire_4_0() {
+        function style_trameviaire_5_0() {
             return {
-                pane: 'pane_trameviaire_4',
+                pane: 'pane_trameviaire_5',
                 opacity: 1,
                 color: 'rgba(164,113,88,1.0)',
                 dashArray: '',
@@ -1172,21 +323,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_trameviaire_4');
-        map.getPane('pane_trameviaire_4').style.zIndex = 404;
-        map.getPane('pane_trameviaire_4').style['mix-blend-mode'] = 'normal';
-        var layer_trameviaire_4 = new L.geoJson(json_trameviaire_4, {
+        map.createPane('pane_trameviaire_5');
+        map.getPane('pane_trameviaire_5').style.zIndex = 405;
+        map.getPane('pane_trameviaire_5').style['mix-blend-mode'] = 'normal';
+        var layer_trameviaire_5 = new L.geoJson(json_trameviaire_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_trameviaire_4',
-            layerName: 'layer_trameviaire_4',
-            pane: 'pane_trameviaire_4',
-            onEachFeature: pop_trameviaire_4,
-            style: style_trameviaire_4_0,
+            dataVar: 'json_trameviaire_5',
+            layerName: 'layer_trameviaire_5',
+            pane: 'pane_trameviaire_5',
+            onEachFeature: pop_trameviaire_5,
+            style: style_trameviaire_5_0,
         });
-        bounds_group.addLayer(layer_trameviaire_4);
-        map.addLayer(layer_trameviaire_4);
-        function pop_routes_5(feature, layer) {
+        bounds_group.addLayer(layer_trameviaire_5);
+        map.addLayer(layer_trameviaire_5);
+        function pop_routes_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -1195,69 +346,11 @@
                 },
                 mouseover: highlightFeature,
             });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['full_id'] !== null ? autolinker.link(feature.properties['full_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['osm_type'] !== null ? autolinker.link(feature.properties['osm_type'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['wikipedia'] !== null ? autolinker.link(feature.properties['wikipedia'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_en'] !== null ? autolinker.link(feature.properties['name_en'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['int_name'] !== null ? autolinker.link(feature.properties['int_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['destinatio'] !== null ? autolinker.link(feature.properties['destinatio'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['to'] !== null ? autolinker.link(feature.properties['to'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['route'] !== null ? autolinker.link(feature.properties['route'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ref_ar'] !== null ? autolinker.link(feature.properties['ref_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">ref</th>\
-                        <td>' + (feature.properties['ref'] !== null ? autolinker.link(feature.properties['ref'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['network'] !== null ? autolinker.link(feature.properties['network'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_fr'] !== null ? autolinker.link(feature.properties['name_fr'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name_ar'] !== null ? autolinker.link(feature.properties['name_ar'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['from'] !== null ? autolinker.link(feature.properties['from'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['distance'] !== null ? autolinker.link(feature.properties['distance'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_routes_5_0() {
+        function style_routes_6_0() {
             return {
-                pane: 'pane_routes_5',
+                pane: 'pane_routes_6',
                 opacity: 1,
                 color: 'rgba(133,182,111,1.0)',
                 dashArray: '',
@@ -1268,20 +361,45 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_routes_5');
-        map.getPane('pane_routes_5').style.zIndex = 405;
-        map.getPane('pane_routes_5').style['mix-blend-mode'] = 'normal';
-        var layer_routes_5 = new L.geoJson(json_routes_5, {
+        map.createPane('pane_routes_6');
+        map.getPane('pane_routes_6').style.zIndex = 406;
+        map.getPane('pane_routes_6').style['mix-blend-mode'] = 'normal';
+        var layer_routes_6 = new L.geoJson(json_routes_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_routes_5',
-            layerName: 'layer_routes_5',
-            pane: 'pane_routes_5',
-            onEachFeature: pop_routes_5,
-            style: style_routes_5_0,
+            dataVar: 'json_routes_6',
+            layerName: 'layer_routes_6',
+            pane: 'pane_routes_6',
+            onEachFeature: pop_routes_6,
+            style: style_routes_6_0,
         });
-        bounds_group.addLayer(layer_routes_5);
-        map.addLayer(layer_routes_5);
+        bounds_group.addLayer(layer_routes_6);
+        map.addLayer(layer_routes_6);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>AS Platform</h2>';
+            };
+            title.addTo(map);
+            var abstract = new L.Control({'position':'bottomleft'});
+            abstract.onAdd = function (map) {
+                this._div = L.DomUtil.create('div',
+                'leaflet-control abstract');
+                this._div.id = 'abstract'
+
+                    abstract.show();
+                    return this._div;
+                };
+                abstract.show = function () {
+                    this._div.classList.remove("abstract");
+                    this._div.classList.add("abstractUncollapsed");
+                    this._div.innerHTML = 'Interactive map';
+            };
+            abstract.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -1293,10 +411,10 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/routes_5.png" /> routes': layer_routes_5,'<img src="legend/trameviaire_4.png" /> trame viaire': layer_trameviaire_4,'<img src="legend/coucheponctuelle_3.png" /> couche ponctuelle': layer_coucheponctuelle_3,'<img src="legend/cadrebati_2.png" /> cadre bati': layer_cadrebati_2,'<img src="legend/limitevilleELTarf_1.png" /> limite ville EL Tarf': layer_limitevilleELTarf_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/routes_6.png" /> routes': layer_routes_6,'<img src="legend/trameviaire_5.png" /> trame viaire': layer_trameviaire_5,'<img src="legend/coucheponctuelle_4.png" /> couche ponctuelle': layer_coucheponctuelle_4,'<img src="legend/cadrebati_3.png" /> cadre bati': layer_cadrebati_3,'<img src="legend/limitevilleELTarf_2.png" /> limite ville EL Tarf': layer_limitevilleELTarf_2,"Google Satellite": layer_GoogleSatellite_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
-            layer: layer_coucheponctuelle_3,
+            layer: layer_coucheponctuelle_4,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'name'}));
@@ -1321,7 +439,7 @@
         document.getElementById("all").appendChild(col1);
         document.getElementById("all").appendChild(col2);
         col1.appendChild(mapDiv)
-        var Filters = {"name_fr": "str","ref_ar": "str"};
+        var Filters = {"prix_L": "real","surface": "real","name": "str"};
         function filterFunc() {
           map.eachLayer(function(lyr){
           if ("options" in lyr && "dataVar" in lyr["options"]){
@@ -1413,199 +531,276 @@
         }
             document.getElementById("menu").appendChild(
                 document.createElement("div"));
-            var div_name_fr = document.createElement('div');
-            div_name_fr.id = "div_name_fr";
-            div_name_fr.className= "filterselect";
-            document.getElementById("menu").appendChild(div_name_fr);
-            sel_name_fr = document.createElement('select');
-            sel_name_fr.multiple = true;
-            sel_name_fr.size = 10;
-            sel_name_fr.id = "sel_name_fr";
-            var name_fr_options_str = "<option value='' unselected></option>";
-            sel_name_fr.onchange = function(){filterFunc()};
-            name_fr_options_str  += '<option value="NULL">NULL</option>';
-            name_fr_options_str  += '<option value="Algérie - Tunisie">Algérie - Tunisie</option>';
-            name_fr_options_str  += '<option value="Algérie Télécom">Algérie Télécom</option>';
-            name_fr_options_str  += '<option value="Aliments Généraux">Aliments Généraux</option>';
-            name_fr_options_str  += '<option value="Apple">Apple</option>';
-            name_fr_options_str  += '<option value="Aseel Al Sham">Aseel Al Sham</option>';
-            name_fr_options_str  += '<option value="Autoroute Est-Ouest">Autoroute Est-Ouest</option>';
-            name_fr_options_str  += '<option value="Autoroute Nord-Sud">Autoroute Nord-Sud</option>';
-            name_fr_options_str  += '<option value="BADR">BADR</option>';
-            name_fr_options_str  += '<option value="BDL Bank">BDL Bank</option>';
-            name_fr_options_str  += '<option value="Banque d&apos;Algérie">Banque d&apos;Algérie</option>';
-            name_fr_options_str  += '<option value="Bazar El Tajje">Bazar El Tajje</option>';
-            name_fr_options_str  += '<option value="Bekkar Naamane électronique">Bekkar Naamane électronique</option>';
-            name_fr_options_str  += '<option value="Boucher">Boucher</option>';
-            name_fr_options_str  += '<option value="Boulangerie Al Awras">Boulangerie Al Awras</option>';
-            name_fr_options_str  += '<option value="Boulangerie Al Nour">Boulangerie Al Nour</option>';
-            name_fr_options_str  += '<option value="Boulangerie Qasimi">Boulangerie Qasimi</option>';
-            name_fr_options_str  += '<option value="Bus Aïn Akhyar">Bus Aïn Akhyar</option>';
-            name_fr_options_str  += '<option value="Bus Guergour">Bus Guergour</option>';
-            name_fr_options_str  += '<option value="Bus Matroha">Bus Matroha</option>';
-            name_fr_options_str  += '<option value="Bus sidi blgassem">Bus sidi blgassem</option>';
-            name_fr_options_str  += '<option value="Bus étudiants">Bus étudiants</option>';
-            name_fr_options_str  += '<option value="CAAR">CAAR</option>';
-            name_fr_options_str  += '<option value="CNEP-Banque">CNEP-Banque</option>';
-            name_fr_options_str  += '<option value="Cadastre El Tarf">Cadastre El Tarf</option>';
-            name_fr_options_str  += '<option value="Cafe Amir">Cafe Amir</option>';
-            name_fr_options_str  += '<option value="Cafe D&apos;or">Cafe D&apos;or</option>';
-            name_fr_options_str  += '<option value="Cafe Nadjma">Cafe Nadjma</option>';
-            name_fr_options_str  += '<option value="Cafe bourjiba">Cafe bourjiba</option>';
-            name_fr_options_str  += '<option value="Café Al-Kods">Café Al-Kods</option>';
-            name_fr_options_str  += '<option value="Casnos">Casnos</option>';
-            name_fr_options_str  += '<option value="Centre commercial">Centre commercial</option>';
-            name_fr_options_str  += '<option value="Chemises légitime de magasin">Chemises légitime de magasin</option>';
-            name_fr_options_str  += '<option value="Coiffeur El Salam">Coiffeur El Salam</option>';
-            name_fr_options_str  += '<option value="Complexe sportif">Complexe sportif</option>';
-            name_fr_options_str  += '<option value="CrÃ©dit populaire d&apos;AlgÃ©rie">CrÃ©dit populaire d&apos;AlgÃ©rie</option>';
-            name_fr_options_str  += '<option value="Direction de l&apos;environnement">Direction de l&apos;environnement</option>';
-            name_fr_options_str  += '<option value="Direction de l&apos;urbanisme de l&apos;architecture et de la construction">Direction de l&apos;urbanisme de l&apos;architecture et de la construction</option>';
-            name_fr_options_str  += '<option value="Direction de l&apos;Ã©ducation">Direction de l&apos;Ã©ducation</option>';
-            name_fr_options_str  += '<option value="Direction de la santé Wilaya d&apos;El Tarf">Direction de la santé Wilaya d&apos;El Tarf</option>';
-            name_fr_options_str  += '<option value="Direction des transports">Direction des transports</option>';
-            name_fr_options_str  += '<option value="Direction du commerce">Direction du commerce</option>';
-            name_fr_options_str  += '<option value="Direction du tourisme et de l&apos;artisanat">Direction du tourisme et de l&apos;artisanat</option>';
-            name_fr_options_str  += '<option value="Djezzy">Djezzy</option>';
-            name_fr_options_str  += '<option value="Douche">Douche</option>';
-            name_fr_options_str  += '<option value="Dr Loucif A urologue">Dr Loucif A urologue</option>';
-            name_fr_options_str  += '<option value="Dr hacini ophtalmologue">Dr hacini ophtalmologue</option>';
-            name_fr_options_str  += '<option value="Dr mira ophtalmologue">Dr mira ophtalmologue</option>';
-            name_fr_options_str  += '<option value="Dr. Boureghda Specialiste en Ophtalmologie">Dr. Boureghda Specialiste en Ophtalmologie</option>';
-            name_fr_options_str  += '<option value="EXPRESS PRESSING">EXPRESS PRESSING</option>';
-            name_fr_options_str  += '<option value="Ecole kaddache Tahar">Ecole kaddache Tahar</option>';
-            name_fr_options_str  += '<option value="El Tarf">El Tarf</option>';
-            name_fr_options_str  += '<option value="Front de Libération Nationale">Front de Libération Nationale</option>';
-            name_fr_options_str  += '<option value="Gare routiÃ¨re d&apos;El Tarf">Gare routiÃ¨re d&apos;El Tarf</option>';
-            name_fr_options_str  += '<option value="Gendarmerie nationale">Gendarmerie nationale</option>';
-            name_fr_options_str  += '<option value="Gouvernorat forestier El Tarf">Gouvernorat forestier El Tarf</option>';
-            name_fr_options_str  += '<option value="Grand post">Grand post</option>';
-            name_fr_options_str  += '<option value="Grande MosquÃ©e">Grande MosquÃ©e</option>';
-            name_fr_options_str  += '<option value="Herbes médicinales">Herbes médicinales</option>';
-            name_fr_options_str  += '<option value="HÃ´pital d&apos;El Tarf">HÃ´pital d&apos;El Tarf</option>';
-            name_fr_options_str  += '<option value="HÃ´tel des finances">HÃ´tel des finances</option>';
-            name_fr_options_str  += '<option value="INSP">INSP</option>';
-            name_fr_options_str  += '<option value="INSPECTION DIVISIONNAIRE DES DOUANES A EL TARF">INSPECTION DIVISIONNAIRE DES DOUANES A EL TARF</option>';
-            name_fr_options_str  += '<option value="Ice cream">Ice cream</option>';
-            name_fr_options_str  += '<option value="Kinésitherapeute">Kinésitherapeute</option>';
-            name_fr_options_str  += '<option value="Le Palm Café">Le Palm Café</option>';
-            name_fr_options_str  += '<option value="Le café de la gare">Le café de la gare</option>';
-            name_fr_options_str  += '<option value="Lunettes médicales">Lunettes médicales</option>';
-            name_fr_options_str  += '<option value="Maestro food">Maestro food</option>';
-            name_fr_options_str  += '<option value="Magasin d&apos;électronique">Magasin d&apos;électronique</option>';
-            name_fr_options_str  += '<option value="Magasin de Fruits et Légumes">Magasin de Fruits et Légumes</option>';
-            name_fr_options_str  += '<option value="Magasin de meubles">Magasin de meubles</option>';
-            name_fr_options_str  += '<option value="Magasin de vélos">Magasin de vélos</option>';
-            name_fr_options_str  += '<option value="Magasin vendant des pièces de machines électromécaniques">Magasin vendant des pièces de machines électromécaniques</option>';
-            name_fr_options_str  += '<option value="Mairie">Mairie</option>';
-            name_fr_options_str  += '<option value="Maison des jeunes">Maison des jeunes</option>';
-            name_fr_options_str  += '<option value="Maison des jeunes Ahmad Btchine">Maison des jeunes Ahmad Btchine</option>';
-            name_fr_options_str  += '<option value="Mobilis">Mobilis</option>';
-            name_fr_options_str  += '<option value="Musée El Tarf">Musée El Tarf</option>';
-            name_fr_options_str  += '<option value="Nourriture et articles ménagers">Nourriture et articles ménagers</option>';
-            name_fr_options_str  += '<option value="Ooredoo">Ooredoo</option>';
-            name_fr_options_str  += '<option value="Pharmacie Bellili-Tahri">Pharmacie Bellili-Tahri</option>';
-            name_fr_options_str  += '<option value="Pharmacie Boumedan">Pharmacie Boumedan</option>';
-            name_fr_options_str  += '<option value="Pharmacie Grira">Pharmacie Grira</option>';
-            name_fr_options_str  += '<option value="Pizzeria">Pizzeria</option>';
-            name_fr_options_str  += '<option value="Place 1 novembre 1954">Place 1 novembre 1954</option>';
-            name_fr_options_str  += '<option value="Place de l&apos;Indépendance">Place de l&apos;Indépendance</option>';
-            name_fr_options_str  += '<option value="Place de la Victoire 19 mars 1962">Place de la Victoire 19 mars 1962</option>';
-            name_fr_options_str  += '<option value="Police nationale">Police nationale</option>';
-            name_fr_options_str  += '<option value="Pont du Oued Boumerzoug">Pont du Oued Boumerzoug</option>';
-            name_fr_options_str  += '<option value="Pont du Oued El Hamiz">Pont du Oued El Hamiz</option>';
-            name_fr_options_str  += '<option value="Restaurant Al - Haqqar">Restaurant Al - Haqqar</option>';
-            name_fr_options_str  += '<option value="Restaurant Melaf">Restaurant Melaf</option>';
-            name_fr_options_str  += '<option value="Restaurant Rossicada">Restaurant Rossicada</option>';
-            name_fr_options_str  += '<option value="Restaurant Zahrat Beyrouth">Restaurant Zahrat Beyrouth</option>';
-            name_fr_options_str  += '<option value="Resto">Resto</option>';
-            name_fr_options_str  += '<option value="Roi Bourak">Roi Bourak</option>';
-            name_fr_options_str  += '<option value="Route nationale 44">Route nationale 44</option>';
-            name_fr_options_str  += '<option value="Rue Benbouali Mohamed">Rue Benbouali Mohamed</option>';
-            name_fr_options_str  += '<option value="Rue Taif Farikh">Rue Taif Farikh</option>';
-            name_fr_options_str  += '<option value="Répartition des téléphones portables Chez Mourad & fathi">Répartition des téléphones portables Chez Mourad & fathi</option>';
-            name_fr_options_str  += '<option value="SAA assurances">SAA assurances</option>';
-            name_fr_options_str  += '<option value="Seata">Seata</option>';
-            name_fr_options_str  += '<option value="Seybouse">Seybouse</option>';
-            name_fr_options_str  += '<option value="Showroom Condor">Showroom Condor</option>';
-            name_fr_options_str  += '<option value="SiÃ¨ge de la Wilaya El Tarf">SiÃ¨ge de la Wilaya El Tarf</option>';
-            name_fr_options_str  += '<option value="Smartphone">Smartphone</option>';
-            name_fr_options_str  += '<option value="Smartphone Store">Smartphone Store</option>';
-            name_fr_options_str  += '<option value="Sntv">Sntv</option>';
-            name_fr_options_str  += '<option value="Station essence zaidi">Station essence zaidi</option>';
-            name_fr_options_str  += '<option value="Sultan">Sultan</option>';
-            name_fr_options_str  += '<option value="Supérette le Cerf">Supérette le Cerf</option>';
-            name_fr_options_str  += '<option value="Séjour Université">Séjour Université</option>';
-            name_fr_options_str  += '<option value="Tour de tourisme Mardjan to&apos;r">Tour de tourisme Mardjan to&apos;r</option>';
-            name_fr_options_str  += '<option value="UniversitÃ© Chadli Bendjedid">UniversitÃ© Chadli Bendjedid</option>';
-            name_fr_options_str  += '<option value="Viaduc d&apos;Oued Rekham">Viaduc d&apos;Oued Rekham</option>';
-            name_fr_options_str  += '<option value="Wilaya">Wilaya</option>';
-            name_fr_options_str  += '<option value="naamane électronique">naamane électronique</option>';
-            name_fr_options_str  += '<option value="pharmacie BOULBIBANE">pharmacie BOULBIBANE</option>';
-            name_fr_options_str  += '<option value="Ã‰cole secondaire">Ã‰cole secondaire</option>';
-            name_fr_options_str  += '<option value="École primaire">École primaire</option>';
-            name_fr_options_str  += '<option value="École élémentaire">École élémentaire</option>';
-            name_fr_options_str  += '<option value="école primaire">école primaire</option>';
-            sel_name_fr.innerHTML = name_fr_options_str;
-            div_name_fr.appendChild(sel_name_fr);
-            var lab_name_fr = document.createElement('div');
-            lab_name_fr.innerHTML = 'name_fr';
-            lab_name_fr.className = 'filterlabel';
-            div_name_fr.appendChild(lab_name_fr);
-            var reset_name_fr = document.createElement('div');
-            reset_name_fr.innerHTML = 'clear filter';
-            reset_name_fr.className = 'filterlabel';
-            reset_name_fr.onclick = function() {
-                var options = document.getElementById("sel_name_fr").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
+            var div_prix_L = document.createElement("div");
+            div_prix_L.id = "div_prix_L";
+            div_prix_L.className = "slider";
+            document.getElementById("menu").appendChild(div_prix_L);
+            var lab_prix_L = document.createElement('div');
+            lab_prix_L.innerHTML  = 'prix_L: <span id="val_prix_L"></span>';
+            lab_prix_L.className = 'filterlabel';
+            document.getElementById("menu").appendChild(lab_prix_L);
+            var reset_prix_L = document.createElement('div');
+            reset_prix_L.innerHTML = 'clear filter';
+            reset_prix_L.className = 'filterlabel';
+            lab_prix_L.className = 'filterlabel';
+            reset_prix_L.onclick = function() {
+                sel_prix_L.noUiSlider.reset();
             };
-            div_name_fr.appendChild(reset_name_fr);
+            document.getElementById("menu").appendChild(reset_prix_L);
+            var sel_prix_L = document.getElementById('div_prix_L');
+            noUiSlider.create(sel_prix_L, {
+                connect: true,
+                start: [15000.0, 40000.0],
+                range: {
+                min: 15000.0,
+                max: 40000.0
+                }
+            });
+            sel_prix_L.noUiSlider.on('update', function (values) {
+            val_prix_L = document.getElementById('val_prix_L');
+            val_prix_L.innerHTML = values.join(' - ');
+                filterFunc()
+            });
             document.getElementById("menu").appendChild(
                 document.createElement("div"));
-            var div_ref_ar = document.createElement('div');
-            div_ref_ar.id = "div_ref_ar";
-            div_ref_ar.className= "filterselect";
-            document.getElementById("menu").appendChild(div_ref_ar);
-            sel_ref_ar = document.createElement('select');
-            sel_ref_ar.multiple = true;
-            sel_ref_ar.size = 10;
-            sel_ref_ar.id = "sel_ref_ar";
-            var ref_ar_options_str = "<option value='' unselected></option>";
-            sel_ref_ar.onchange = function(){filterFunc()};
-            ref_ar_options_str  += '<option value="NULL">NULL</option>';
-            ref_ar_options_str  += '<option value="ط ء 37">ط ء 37</option>';
-            ref_ar_options_str  += '<option value="ط ء 9">ط ء 9</option>';
-            ref_ar_options_str  += '<option value="ط س 1">ط س 1</option>';
-            ref_ar_options_str  += '<option value="ط و 16">ط و 16</option>';
-            ref_ar_options_str  += '<option value="ط و 44">ط و 44</option>';
-            ref_ar_options_str  += '<option value="ط و 44;ط ء 37">ط و 44;ط ء 37</option>';
-            ref_ar_options_str  += '<option value="ط و 84">ط و 84</option>';
-            ref_ar_options_str  += '<option value="طس 1">طس 1</option>';
-            ref_ar_options_str  += '<option value="طس 3">طس 3</option>';
-            ref_ar_options_str  += '<option value="طو 16">طو 16</option>';
-            ref_ar_options_str  += '<option value="طو 44">طو 44</option>';
-            ref_ar_options_str  += '<option value="طو 82">طو 82</option>';
-            ref_ar_options_str  += '<option value="طو 84">طو 84</option>';
-            sel_ref_ar.innerHTML = ref_ar_options_str;
-            div_ref_ar.appendChild(sel_ref_ar);
-            var lab_ref_ar = document.createElement('div');
-            lab_ref_ar.innerHTML = 'ref_ar';
-            lab_ref_ar.className = 'filterlabel';
-            div_ref_ar.appendChild(lab_ref_ar);
-            var reset_ref_ar = document.createElement('div');
-            reset_ref_ar.innerHTML = 'clear filter';
-            reset_ref_ar.className = 'filterlabel';
-            reset_ref_ar.onclick = function() {
-                var options = document.getElementById("sel_ref_ar").options;
+            var div_surface = document.createElement("div");
+            div_surface.id = "div_surface";
+            div_surface.className = "slider";
+            document.getElementById("menu").appendChild(div_surface);
+            var lab_surface = document.createElement('div');
+            lab_surface.innerHTML  = 'surface: <span id="val_surface"></span>';
+            lab_surface.className = 'filterlabel';
+            document.getElementById("menu").appendChild(lab_surface);
+            var reset_surface = document.createElement('div');
+            reset_surface.innerHTML = 'clear filter';
+            reset_surface.className = 'filterlabel';
+            lab_surface.className = 'filterlabel';
+            reset_surface.onclick = function() {
+                sel_surface.noUiSlider.reset();
+            };
+            document.getElementById("menu").appendChild(reset_surface);
+            var sel_surface = document.getElementById('div_surface');
+            noUiSlider.create(sel_surface, {
+                connect: true,
+                start: [7.53, 221854.35],
+                range: {
+                min: 7.53,
+                max: 221854.35
+                }
+            });
+            sel_surface.noUiSlider.on('update', function (values) {
+            val_surface = document.getElementById('val_surface');
+            val_surface.innerHTML = values.join(' - ');
+                filterFunc()
+            });
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_name = document.createElement('div');
+            div_name.id = "div_name";
+            div_name.className= "filterselect";
+            document.getElementById("menu").appendChild(div_name);
+            sel_name = document.createElement('select');
+            sel_name.multiple = true;
+            sel_name.size = 10;
+            sel_name.id = "sel_name";
+            var name_options_str = "<option value='' unselected></option>";
+            sel_name.onchange = function(){filterFunc()};
+            name_options_str  += '<option value="NULL">NULL</option>';
+            name_options_str  += '<option value="Alimentation Générale Chez Malak سوبرماركت">Alimentation Générale Chez Malak سوبرماركت</option>';
+            name_options_str  += '<option value="BANQUE NATIONAL &apos;ALGERIE">BANQUE NATIONAL &apos;ALGERIE</option>';
+            name_options_str  += '<option value="Bi">Bi</option>';
+            name_options_str  += '<option value="Boucher Abbas">Boucher Abbas</option>';
+            name_options_str  += '<option value="Bus sidi blgassem حافلة سيدي بلقاسم">Bus sidi blgassem حافلة سيدي بلقاسم</option>';
+            name_options_str  += '<option value="CACOBATPH Agence Wilaya">CACOBATPH Agence Wilaya</option>';
+            name_options_str  += '<option value="CNEP-Banque">CNEP-Banque</option>';
+            name_options_str  += '<option value="Cadastre El Tarf">Cadastre El Tarf</option>';
+            name_options_str  += '<option value="Cafe Milano">Cafe Milano</option>';
+            name_options_str  += '<option value="Cafétéria 24/24">Cafétéria 24/24</option>';
+            name_options_str  += '<option value="Concessionnaire HYUNDAI">Concessionnaire HYUNDAI</option>';
+            name_options_str  += '<option value="Concessionnaire RENAULT/DACIA">Concessionnaire RENAULT/DACIA</option>';
+            name_options_str  += '<option value="Cosmétique Bobo">Cosmétique Bobo</option>';
+            name_options_str  += '<option value="Cyber cafe">Cyber cafe</option>';
+            name_options_str  += '<option value="Damino&apos;s pizza Minou Chef">Damino&apos;s pizza Minou Chef</option>';
+            name_options_str  += '<option value="Daïra d&apos;El Tarf">Daïra d&apos;El Tarf</option>';
+            name_options_str  += '<option value="Direction de la douane">Direction de la douane</option>';
+            name_options_str  += '<option value="Direction du logement et des équipements publics">Direction du logement et des équipements publics</option>';
+            name_options_str  += '<option value="EXPRESS PRESSING إكسبرس برسنق">EXPRESS PRESSING إكسبرس برسنق</option>';
+            name_options_str  += '<option value="El Tarf">El Tarf</option>';
+            name_options_str  += '<option value="Hotel Paradis Palace">Hotel Paradis Palace</option>';
+            name_options_str  += '<option value="Ice">Ice</option>';
+            name_options_str  += '<option value="La greff">La greff</option>';
+            name_options_str  += '<option value="Maestro food مائسترو فود">Maestro food مائسترو فود</option>';
+            name_options_str  += '<option value="Mobilis">Mobilis</option>';
+            name_options_str  += '<option value="Mosquée El Fath">Mosquée El Fath</option>';
+            name_options_str  += '<option value="Pharmacie Bellili-Tahri صيدلية بليلي الطهري">Pharmacie Bellili-Tahri صيدلية بليلي الطهري</option>';
+            name_options_str  += '<option value="Pharmacie GRIRA صيدلية قريرة">Pharmacie GRIRA صيدلية قريرة</option>';
+            name_options_str  += '<option value="Resto">Resto</option>';
+            name_options_str  += '<option value="Sntv نقل المسافرين">Sntv نقل المسافرين</option>';
+            name_options_str  += '<option value="Syber Cafe">Syber Cafe</option>';
+            name_options_str  += '<option value="Transafricaine 1 Le Caire - Dakar">Transafricaine 1 Le Caire - Dakar</option>';
+            name_options_str  += '<option value="Tribunal">Tribunal</option>';
+            name_options_str  += '<option value="Univesity of Law and political sciance">Univesity of Law and political sciance</option>';
+            name_options_str  += '<option value="café ferdjani">café ferdjani</option>';
+            name_options_str  += '<option value="أبل 3600">أبل 3600</option>';
+            name_options_str  += '<option value="أخصائية في العلاج الطبيعي">أخصائية في العلاج الطبيعي</option>';
+            name_options_str  += '<option value="أعشاب طبية">أعشاب طبية</option>';
+            name_options_str  += '<option value="أكتل الطارف">أكتل الطارف</option>';
+            name_options_str  += '<option value="أوريدو">أوريدو</option>';
+            name_options_str  += '<option value="إبتدائية قداش الطاهر">إبتدائية قداش الطاهر</option>';
+            name_options_str  += '<option value="إقامة جامعية 1000 سرير">إقامة جامعية 1000 سرير</option>';
+            name_options_str  += '<option value="ابتدائية">ابتدائية</option>';
+            name_options_str  += '<option value="الأمن الحضري الأول">الأمن الحضري الأول</option>';
+            name_options_str  += '<option value="الأمن الولاية">الأمن الولاية</option>';
+            name_options_str  += '<option value="البلدية">البلدية</option>';
+            name_options_str  += '<option value="الدكتور بورغدة لمختص في الطب وجراحة العيون">الدكتور بورغدة لمختص في الطب وجراحة العيون</option>';
+            name_options_str  += '<option value="الدكتور حسيني طبيب عيون">الدكتور حسيني طبيب عيون</option>';
+            name_options_str  += '<option value="الدكتور لوسف طبيب المسالك البولية">الدكتور لوسف طبيب المسالك البولية</option>';
+            name_options_str  += '<option value="الدكتور ميرا طبيب عيون">الدكتور ميرا طبيب عيون</option>';
+            name_options_str  += '<option value="الربيد المركزي">الربيد المركزي</option>';
+            name_options_str  += '<option value="الصندوق الوطني لضمان الإجتماعي">الصندوق الوطني لضمان الإجتماعي</option>';
+            name_options_str  += '<option value="الصندوق الوطني للتأمين عن البطالة">الصندوق الوطني للتأمين عن البطالة</option>';
+            name_options_str  += '<option value="الطريق الوطني رقم 44">الطريق الوطني رقم 44</option>';
+            name_options_str  += '<option value="المجلس الشعبي الولائي">المجلس الشعبي الولائي</option>';
+            name_options_str  += '<option value="المجلس القضائي">المجلس القضائي</option>';
+            name_options_str  += '<option value="المحكمة الإدارية">المحكمة الإدارية</option>';
+            name_options_str  += '<option value="المركب الرياضي">المركب الرياضي</option>';
+            name_options_str  += '<option value="المركز الجهوي للضرائب الطارف">المركز الجهوي للضرائب الطارف</option>';
+            name_options_str  += '<option value="المصلحة الوقائية للأمن العمومي">المصلحة الوقائية للأمن العمومي</option>';
+            name_options_str  += '<option value="النظارات الطبية">النظارات الطبية</option>';
+            name_options_str  += '<option value="الوكالة السياحية مرجان تور">الوكالة السياحية مرجان تور</option>';
+            name_options_str  += '<option value="الولاية">الولاية</option>';
+            name_options_str  += '<option value="بازار التاج">بازار التاج</option>';
+            name_options_str  += '<option value="بتزيريا">بتزيريا</option>';
+            name_options_str  += '<option value="بتزيريا ومأكولات خفيفة">بتزيريا ومأكولات خفيفة</option>';
+            name_options_str  += '<option value="بريد الجزائر">بريد الجزائر</option>';
+            name_options_str  += '<option value="بريد الجزائر القباضة الرئيسية الطارف">بريد الجزائر القباضة الرئيسية الطارف</option>';
+            name_options_str  += '<option value="بكار نعمان للإلكترونيات">بكار نعمان للإلكترونيات</option>';
+            name_options_str  += '<option value="بنك التنمية المحلية">بنك التنمية المحلية</option>';
+            name_options_str  += '<option value="بنك الجزائر">بنك الجزائر</option>';
+            name_options_str  += '<option value="بنك الفلاحة والتنمية الريفية">بنك الفلاحة والتنمية الريفية</option>';
+            name_options_str  += '<option value="بيع الأدوات المكتبية بالجملة">بيع الأدوات المكتبية بالجملة</option>';
+            name_options_str  += '<option value="بيع الألمنيوم و لواحقه بتجزئة">بيع الألمنيوم و لواحقه بتجزئة</option>';
+            name_options_str  += '<option value="بيع قطع غيار الشاحنات و العتاد الفلاحي">بيع قطع غيار الشاحنات و العتاد الفلاحي</option>';
+            name_options_str  += '<option value="تصليح الهواتف عند مراد">تصليح الهواتف عند مراد</option>';
+            name_options_str  += '<option value="جازي">جازي</option>';
+            name_options_str  += '<option value="جبهة التحرير الوطني">جبهة التحرير الوطني</option>';
+            name_options_str  += '<option value="حافلات الطلبة">حافلات الطلبة</option>';
+            name_options_str  += '<option value="حافلات القرقور">حافلات القرقور</option>';
+            name_options_str  += '<option value="حافلات قرية عين أخيار">حافلات قرية عين أخيار</option>';
+            name_options_str  += '<option value="حافلات مطروحة">حافلات مطروحة</option>';
+            name_options_str  += '<option value="حلاق السلام">حلاق السلام</option>';
+            name_options_str  += '<option value="حلويات">حلويات</option>';
+            name_options_str  += '<option value="حلويات السرايا">حلويات السرايا</option>';
+            name_options_str  += '<option value="حلويات ومرطبات">حلويات ومرطبات</option>';
+            name_options_str  += '<option value="خديمي الأثاث المزلية">خديمي الأثاث المزلية</option>';
+            name_options_str  += '<option value="دار البلدية">دار البلدية</option>';
+            name_options_str  += '<option value="دار الشباب">دار الشباب</option>';
+            name_options_str  += '<option value="دار الشباب أحمد بتشين">دار الشباب أحمد بتشين</option>';
+            name_options_str  += '<option value="دار الضيافة ولاية الطارف">دار الضيافة ولاية الطارف</option>';
+            name_options_str  += '<option value="دهانات الديكور الأولى في الجزائر">دهانات الديكور الأولى في الجزائر</option>';
+            name_options_str  += '<option value="دوش">دوش</option>';
+            name_options_str  += '<option value="دوش رياضو">دوش رياضو</option>';
+            name_options_str  += '<option value="ساحة 1 نوفمبر 1954">ساحة 1 نوفمبر 1954</option>';
+            name_options_str  += '<option value="ساحة الإستقلال">ساحة الإستقلال</option>';
+            name_options_str  += '<option value="ساحة المجاهد">ساحة المجاهد</option>';
+            name_options_str  += '<option value="ساحة النصر 19 مارس 1962">ساحة النصر 19 مارس 1962</option>';
+            name_options_str  += '<option value="ساحة الوئام">ساحة الوئام</option>';
+            name_options_str  += '<option value="سوبرماركت ميني ماركت">سوبرماركت ميني ماركت</option>';
+            name_options_str  += '<option value="سوبيرات الأيل Supérette le Cerf">سوبيرات الأيل Supérette le Cerf</option>';
+            name_options_str  += '<option value="سوق الرحمة ملابس و أحذية">سوق الرحمة ملابس و أحذية</option>';
+            name_options_str  += '<option value="سياتا صندوق تحصيل">سياتا صندوق تحصيل</option>';
+            name_options_str  += '<option value="شاي تيميمون">شاي تيميمون</option>';
+            name_options_str  += '<option value="شرفي لقطع الغيار">شرفي لقطع الغيار</option>';
+            name_options_str  += '<option value="شعباني لقطع الغيار">شعباني لقطع الغيار</option>';
+            name_options_str  += '<option value="صالة العرض كوندور">صالة العرض كوندور</option>';
+            name_options_str  += '<option value="صيدلية pharmacie BOULBIBANE">صيدلية pharmacie BOULBIBANE</option>';
+            name_options_str  += '<option value="صيدلية بومدان">صيدلية بومدان</option>';
+            name_options_str  += '<option value="فاست فود الياقوت">فاست فود الياقوت</option>';
+            name_options_str  += '<option value="قاعة متعددة الرياضات المجاهد طويل علي بن محمد">قاعة متعددة الرياضات المجاهد طويل علي بن محمد</option>';
+            name_options_str  += '<option value="قطع غيار السيارات">قطع غيار السيارات</option>';
+            name_options_str  += '<option value="كلية العلوم الإقتصادية">كلية العلوم الإقتصادية</option>';
+            name_options_str  += '<option value="كوندور">كوندور</option>';
+            name_options_str  += '<option value="لوازم الخياطة و عطور عند فيصل">لوازم الخياطة و عطور عند فيصل</option>';
+            name_options_str  += '<option value="متجر الخضر والفواكه">متجر الخضر والفواكه</option>';
+            name_options_str  += '<option value="متجر الهواتف المحمولة">متجر الهواتف المحمولة</option>';
+            name_options_str  += '<option value="متجر بيع قطع غيار الآلات الكهرومنزلية">متجر بيع قطع غيار الآلات الكهرومنزلية</option>';
+            name_options_str  += '<option value="متجر دراجات الهوائية">متجر دراجات الهوائية</option>';
+            name_options_str  += '<option value="متجر طيور الزينة">متجر طيور الزينة</option>';
+            name_options_str  += '<option value="متجر للأقمصة">متجر للأقمصة</option>';
+            name_options_str  += '<option value="متجر للأقمصة و اللباس الشرعي">متجر للأقمصة و اللباس الشرعي</option>';
+            name_options_str  += '<option value="متحف ولاية الطارف">متحف ولاية الطارف</option>';
+            name_options_str  += '<option value="متوسطة لبرق موسى">متوسطة لبرق موسى</option>';
+            name_options_str  += '<option value="محافظة الغابات لولاية الطارف">محافظة الغابات لولاية الطارف</option>';
+            name_options_str  += '<option value="محل أواني منزلية">محل أواني منزلية</option>';
+            name_options_str  += '<option value="محلات تريدي إبراهيم">محلات تريدي إبراهيم</option>';
+            name_options_str  += '<option value="مخبزة الأوراس">مخبزة الأوراس</option>';
+            name_options_str  += '<option value="مخبزة الإيمان">مخبزة الإيمان</option>';
+            name_options_str  += '<option value="مخبزة النور">مخبزة النور</option>';
+            name_options_str  += '<option value="مخبزة قاسمي">مخبزة قاسمي</option>';
+            name_options_str  += '<option value="مدرسة ابتدائية">مدرسة ابتدائية</option>';
+            name_options_str  += '<option value="مديرية البرمجة و متابعة الميزانية">مديرية البرمجة و متابعة الميزانية</option>';
+            name_options_str  += '<option value="مديرية البيئة">مديرية البيئة</option>';
+            name_options_str  += '<option value="مديرية التجارة">مديرية التجارة</option>';
+            name_options_str  += '<option value="مديرية التعمير والهندسة المعمارية والبناء لولاية طارف">مديرية التعمير والهندسة المعمارية والبناء لولاية طارف</option>';
+            name_options_str  += '<option value="مديرية التوزيع سونلغاز">مديرية التوزيع سونلغاز</option>';
+            name_options_str  += '<option value="مديرية الحماية المدنية">مديرية الحماية المدنية</option>';
+            name_options_str  += '<option value="مديرية السياحة و الصناعة التقليدية">مديرية السياحة و الصناعة التقليدية</option>';
+            name_options_str  += '<option value="مديرية الشؤون الدينية و الأوقاف">مديرية الشؤون الدينية و الأوقاف</option>';
+            name_options_str  += '<option value="مديرية الشباب و الرياضة">مديرية الشباب و الرياضة</option>';
+            name_options_str  += '<option value="مديرية الصحة لولاية الطارف">مديرية الصحة لولاية الطارف</option>';
+            name_options_str  += '<option value="مديرية الصيد البحري و موارد الصيدية">مديرية الصيد البحري و موارد الصيدية</option>';
+            name_options_str  += '<option value="مديرية المجاهدين">مديرية المجاهدين</option>';
+            name_options_str  += '<option value="مديرية النقل">مديرية النقل</option>';
+            name_options_str  += '<option value="مرش">مرش</option>';
+            name_options_str  += '<option value="مركز التكوين المهني و التمهين">مركز التكوين المهني و التمهين</option>';
+            name_options_str  += '<option value="مركز الثقافي الإسلامي">مركز الثقافي الإسلامي</option>';
+            name_options_str  += '<option value="مركز الشرطة">مركز الشرطة</option>';
+            name_options_str  += '<option value="مركز العائلة">مركز العائلة</option>';
+            name_options_str  += '<option value="مركز تجاري">مركز تجاري</option>';
+            name_options_str  += '<option value="مركز تكوين المهني و التمهين علام منور">مركز تكوين المهني و التمهين علام منور</option>';
+            name_options_str  += '<option value="مسمكة الطارف">مسمكة الطارف</option>';
+            name_options_str  += '<option value="مطعم السلطان">مطعم السلطان</option>';
+            name_options_str  += '<option value="مطعم الهقار">مطعم الهقار</option>';
+            name_options_str  += '<option value="مطعم روسيكادا">مطعم روسيكادا</option>';
+            name_options_str  += '<option value="مطعم زهرة بيروت">مطعم زهرة بيروت</option>';
+            name_options_str  += '<option value="مطعم ميلاف">مطعم ميلاف</option>';
+            name_options_str  += '<option value="مطعم و مشاوي أصيل الشام">مطعم و مشاوي أصيل الشام</option>';
+            name_options_str  += '<option value="معدات الحماية ضد الحريق">معدات الحماية ضد الحريق</option>';
+            name_options_str  += '<option value="معهد الوطني المتخصص في التكوين المهني عمارة عسكري المدعو بوقلاز">معهد الوطني المتخصص في التكوين المهني عمارة عسكري المدعو بوقلاز</option>';
+            name_options_str  += '<option value="معهد تكوين المهني">معهد تكوين المهني</option>';
+            name_options_str  += '<option value="مفتشية الأقسام للجمارك الطارف">مفتشية الأقسام للجمارك الطارف</option>';
+            name_options_str  += '<option value="مفروشات شهاب الدين">مفروشات شهاب الدين</option>';
+            name_options_str  += '<option value="مقصبة">مقصبة</option>';
+            name_options_str  += '<option value="مقهى الأمير">مقهى الأمير</option>';
+            name_options_str  += '<option value="مقهى القدس">مقهى القدس</option>';
+            name_options_str  += '<option value="مقهى المحطة">مقهى المحطة</option>';
+            name_options_str  += '<option value="مقهى النجمة">مقهى النجمة</option>';
+            name_options_str  += '<option value="مقهى النخلة">مقهى النخلة</option>';
+            name_options_str  += '<option value="مقهى برجيبة">مقهى برجيبة</option>';
+            name_options_str  += '<option value="مكتبة المطالعة العمومية الشهيدة فرونسواز لويز">مكتبة المطالعة العمومية الشهيدة فرونسواز لويز</option>';
+            name_options_str  += '<option value="ملك بوراك">ملك بوراك</option>';
+            name_options_str  += '<option value="مواد الغذائية عامة">مواد الغذائية عامة</option>';
+            name_options_str  += '<option value="مواد غذائية">مواد غذائية</option>';
+            name_options_str  += '<option value="مواد غذائية عامة">مواد غذائية عامة</option>';
+            name_options_str  += '<option value="مواد غذائية و لوازم منزلية">مواد غذائية و لوازم منزلية</option>';
+            name_options_str  += '<option value="نعمان للإلكترونيات">نعمان للإلكترونيات</option>';
+            sel_name.innerHTML = name_options_str;
+            div_name.appendChild(sel_name);
+            var lab_name = document.createElement('div');
+            lab_name.innerHTML = 'name';
+            lab_name.className = 'filterlabel';
+            div_name.appendChild(lab_name);
+            var reset_name = document.createElement('div');
+            reset_name.innerHTML = 'clear filter';
+            reset_name.className = 'filterlabel';
+            reset_name.onclick = function() {
+                var options = document.getElementById("sel_name").options;
                 for (var i=0; i < options.length; i++) {
                     options[i].selected = false;
                 }
                 filterFunc();
             };
-            div_ref_ar.appendChild(reset_ref_ar);
+            div_name.appendChild(reset_name);
         </script>
     </body>
 </html>
